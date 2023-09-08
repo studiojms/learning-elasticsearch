@@ -7,6 +7,427 @@
 	},
 	"item": [
 		{
+			"name": "Term Level Queries",
+			"item": [
+				{
+					"name": "Query Term",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"term\": {\n            \"tags.keyword\": \"Vegetable\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Terms",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"terms\": {\n            \"tags.keyword\": [\"Vegetable\", \"Soup\"]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Ids",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"ids\": {\n            \"values\": [\"100\", \"200\"]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Range",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"range\": {\n            \"in_stock\": {\n                \"gte\": 1,\n                \"lte\": 5\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Range Dates",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"range\": {\n            \"created\": {\n                \"format\": \"yyyy/MM/dd\", \n                \"gte\": \"2007/01/01\",\n                \"lte\": \"2007/01/31\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Field Exists",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"exists\": {\n            \"field\": \"tags.keyword\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Field Not Exists",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"bool\": {\n            \"must_not\": [\n                {\n                    \"exists\": {\n                        \"field\": \"tags.keyword\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Full Text Queries",
+			"item": [
+				{
+					"name": "Query Match",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"match\": {\n            \"name\": \"pasta\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Match With Operator",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"match\": {\n            \"name\": {\n                \"query\": \"pasta chicken\",\n                \"operator\": \"and\"\n            }\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Multi-Match",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"multi_match\": {\n            \"query\": \"vegetable\",\n            \"fields\": [\"name\", \"tags\"]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Phrase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"match_phrase\": {\n            \"description\": \"rice with corn\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Compound Queries",
+			"item": [
+				{
+					"name": "Query Boolean",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"bool\": {\n            \"must\": [\n                {\n                    \"term\": {\n                        \"tags.keyword\": \"Alcohol\"\n                    }\n                }\n            ],\n            \"must_not\": [\n                {\n                    \"term\": {\n                        \"tags.keyword\": \"Wine\"\n                    }\n                }\n            ],\n            \"should\": [\n                {\n                    \"term\": {\n                        \"tags.keyword\": \"Beer\"\n                    }\n                },\n                {\n                    \"match\": {\n                        \"name\": \"beer\"\n                    }\n                },\n                {\n                    \"match\": {\n                        \"description\": \"beer\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Boolean With Filter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"bool\": {\n            \"filter\": [\n                {\n                    \"term\": {\n                        \"tags.keyword\": \"Alcohol\"\n                    }\n                }\n            ],\n            \"must_not\": [\n                {\n                    \"term\": {\n                        \"tags.keyword\": \"Wine\"\n                    }\n                }\n            ],\n            \"should\": [\n                {\n                    \"term\": {\n                        \"tags.keyword\": \"Beer\"\n                    }\n                },\n                {\n                    \"match\": {\n                        \"name\": \"beer\"\n                    }\n                },\n                {\n                    \"match\": {\n                        \"description\": \"beer\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Using Boost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"query\": {\n        \"boosting\": {\n            \"positive\": {\n                \"match\": {\n                    \"name\": \"juice\"\n                }\n            },\n            \"negative\": {\n                \"match\": {\n                    \"name\": \"apple\"\n                }\n            },\n            \"negative_boost\": 0.5\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/products/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"products",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "http://localhost:9200/",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
